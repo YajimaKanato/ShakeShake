@@ -35,6 +35,9 @@ public class Shake : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// d‚İ•t‚«Šm—¦‚É‚æ‚é¶¬ 
+    /// </summary>
     void Drop()
     {
         if (dropList.Count == 0 || dropList == null)

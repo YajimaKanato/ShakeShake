@@ -8,7 +8,6 @@ public class Basket : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        director.GetComponent<GameDirector>().ScoreChange();
         GameDirector.Score = collision.gameObject.GetComponent<Prefab>().dropScore;
         Destroy(collision.gameObject);
     }
