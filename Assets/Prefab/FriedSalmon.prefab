@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7412132604201517868}
   - component: {fileID: 8676707063965544907}
   - component: {fileID: -8832659142466482238}
+  - component: {fileID: -5292871896386227123}
   m_Layer: 0
   m_Name: FriedSalmon
   m_TagString: Untagged
@@ -152,3 +153,17 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &-5292871896386227123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7564819079223350265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce937c84f2715b9448e7f8d1514f6253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropRate: 1
+  dropScore: 500

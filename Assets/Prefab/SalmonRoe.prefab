@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5971261080517192458}
   - component: {fileID: -6370404633478425790}
   - component: {fileID: 8691162000441059210}
+  - component: {fileID: 1913638736437958225}
   m_Layer: 0
   m_Name: SalmonRoe
   m_TagString: Untagged
@@ -152,3 +153,17 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.49999997
+--- !u!114 &1913638736437958225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9221820389420583176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce937c84f2715b9448e7f8d1514f6253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropRate: 100
+  dropScore: 10

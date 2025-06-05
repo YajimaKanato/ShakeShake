@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3934377447672734965}
   - component: {fileID: 9030827506625893332}
   - component: {fileID: 4081796291967778024}
+  - component: {fileID: 3108916535021326208}
   m_Layer: 0
   m_Name: SalmonFillet
   m_TagString: Untagged
@@ -153,3 +154,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!114 &3108916535021326208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508210221776623998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce937c84f2715b9448e7f8d1514f6253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropRate: 1
+  dropScore: 100
