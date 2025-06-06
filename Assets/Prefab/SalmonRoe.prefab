@@ -166,4 +166,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropRate: 100
-  dropScore: 10
+  key: Salmon
+  dropScore: 1

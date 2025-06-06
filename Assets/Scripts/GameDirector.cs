@@ -1,7 +1,17 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+
+enum PrefabEnum
+{
+    SalmonInRiceball = 100,
+    SalmonFillet = 100,
+    SalmonCaviar = 100,
+    FriedSalmon = 100,
+    BearEatSalmon = 100
+}
 
 public class GameDirector : MonoBehaviour
 {
@@ -9,8 +19,8 @@ public class GameDirector : MonoBehaviour
     [SerializeField]
     Text text;
     static int score = 0;
-    private static float bonus = 1.0f;
-    public static int Score { set { score += (int)(value * bonus); } }
+    private static float bonus = 0.0f;
+    public static int Score { set { score += (int)(value + bonus); } }
 
     void Start()
     {
@@ -23,10 +33,16 @@ public class GameDirector : MonoBehaviour
     }
 
     //以降がボタンに設置するメソッド
+    int bonusHard = 0;
     public void Bonus()
     {
-        Debug.Log($"Bonus={bonus}");
-        bonus += 0.01f;
+        if (score >= 100 + bonusHard)
+        {
+            bonus++;
+            Debug.Log($"Bonus={bonus}");
+            score -= 100 + bonusHard;
+            bonusHard += 100;
+        }
     }
 
     //確率変更
@@ -48,19 +64,47 @@ public class GameDirector : MonoBehaviour
         {
             if (list.GetComponent<Prefab>().key == key)
             {
-                if (list.GetComponent<Prefab>().dropRate == 0)
+                foreach (var value in Enum.GetValues(typeof(PrefabEnum)))
                 {
-                    Debug.Log($"{key}を解放");
+                    string name = Enum.GetName(typeof(PrefabEnum), value);
+                    if (list.GetComponent<Prefab>().key == name)
+                    {
+                        if (score >= (int)value)
+                        {
+                            if (list.GetComponent<Prefab>().dropRate == 0)
+                            {
+                                Debug.Log($"{key}を解放");
+                            }
+                            else
+                            {
+                                Debug.Log($"{key}の確率を変更");
+                            }
+                            list.GetComponent<Prefab>().dropRate += 0.01f;
+                            score -= (int)value;
+                            return;
+                        }
+                    }
                 }
-                else
-                {
-                    Debug.Log($"{key}の確率を変更");
-                }
-                list.GetComponent<Prefab>().dropRate += 0.01f;
-                return;
+
             }
         }
     }
+
+    void RateChangeLock(GameObject list)
+    {
+        foreach (var value in Enum.GetValues(typeof(PrefabEnum)))
+        {
+            string name = Enum.GetName(typeof(PrefabEnum), value);
+            if (list.GetComponent<Prefab>().key == name)
+            {
+                if (score >= (int)value)
+                {
+                    score -= (int)value;
+                }
+            }
+        }
+    }
+
     public void RateListClose()
     {
         Debug.Log("確率変更リストクローズ");
@@ -176,7 +220,7 @@ public class GameDirector : MonoBehaviour
     GameObject shake;
     public void ShakeRangeChange()
     {
-        if (shakeRange.localScale.x > 0.01f)
+        if (shakeRange.localScale.x > 0.02f)
         {
             shakeRange.localScale -= new Vector3(0.01f, 0.01f);
             shake.GetComponent<Shake>().shakeRange -= 0.04f;
@@ -184,4 +228,19 @@ public class GameDirector : MonoBehaviour
     }
 
 
+    //プレイング情報
+    [Header("PlayingList")]
+    [SerializeField]
+    GameObject playingList;
+    public void PlayingListOpen()
+    {
+        playingList.SetActive(true);
+    }
+
+
+
+    public void PlayingListClose()
+    {
+        playingList.SetActive(false);
+    }
 }

@@ -880,6 +880,7 @@ MonoBehaviour:
   guardRight: {fileID: 95374881}
   shakeRange: {fileID: 966182077}
   shake: {fileID: 1161740263}
+  playingList: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
