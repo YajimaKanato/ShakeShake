@@ -33,17 +33,10 @@ public class GameDirector : MonoBehaviour
     [Header("RateListOpen")]
     [SerializeField]
     GameObject openList;
-
     public void RateListOpen()
     {
         Debug.Log("確率変更リストオープン");
         openList.SetActive(true);
-    }
-
-    public void RateListClose()
-    {
-        Debug.Log("確率変更リストクローズ");
-        openList.SetActive(false);
     }
 
     [Header("PrefabList")]
@@ -55,20 +48,41 @@ public class GameDirector : MonoBehaviour
         {
             if (list.GetComponent<Prefab>().key == key)
             {
-                Debug.Log($"{key}の確率を変更");
+                if (list.GetComponent<Prefab>().dropRate == 0)
+                {
+                    Debug.Log($"{key}を解放");
+                }
+                else
+                {
+                    Debug.Log($"{key}の確率を変更");
+                }
                 list.GetComponent<Prefab>().dropRate += 0.01f;
                 return;
             }
         }
     }
+    public void RateListClose()
+    {
+        Debug.Log("確率変更リストクローズ");
+        openList.SetActive(false);
+    }
+
 
     //オートでスコアを加算する
-    private float autoScoreInterval = 5.1f;
+    private float autoScoreInterval = 5.0f;
+    private int autoScore = 1;
     Coroutine coroutine;
+
+    [Header("AutoSetting")]
+    [SerializeField]
+    GameObject autoSettingList;
+    public void AutoSettingListOpen()
+    {
+        autoSettingList.SetActive(true);
+    }
+
     public void AutoScoreStart()
     {
-        autoScoreInterval -= 0.1f;
-        Debug.Log($"現在のインターバル={autoScoreInterval}");
         if (coroutine == null)
         {
             Debug.Log("オートスコアスタート");
@@ -76,16 +90,98 @@ public class GameDirector : MonoBehaviour
         }
     }
 
-    [Header("SalmonOre")]
-    [SerializeField]
-    GameObject ore;
     IEnumerator AutoScoreCoroutine()
     {
         while (true)
         {
             yield return new WaitForSeconds(autoScoreInterval);
-            score += ore.GetComponent<Prefab>().dropScore;
+            score += autoScore;
             Debug.Log("スコア加算");
         }
     }
+
+    public void AutoScoreUp()
+    {
+        autoScore++;
+    }
+
+    public void IntervalDecrease()
+    {
+        if (autoScoreInterval > 0)
+        {
+            autoScoreInterval -= 0.1f;
+        }
+    }
+
+    public void SettingListClose()
+    {
+        autoSettingList.SetActive(false);
+    }
+
+
+    //オブジェクトレベル
+    [Header("ObjectLevelList")]
+    [SerializeField]
+    GameObject objectLevelList;
+    public void ObjectLevelListOpen()
+    {
+        objectLevelList.SetActive(true);
+    }
+
+    [Header("Basket")]
+    [SerializeField]
+    Transform basket;
+    public void BasketLevelUp()
+    {
+        if (basket.localScale.x < 4 && basket.localScale.y < 1)
+        {
+            basket.localScale += new Vector3(0.04f, 0.01f);
+        }
+    }
+
+    [Header("GuardLeft")]
+    [SerializeField]
+    Transform guardLeft;
+    public void GuardLeftLevelUp()
+    {
+        if (guardLeft.localScale.x < 1 && guardLeft.localScale.y < 2)
+        {
+            guardLeft.localScale += new Vector3(0.01f, 0.02f);
+        }
+    }
+
+    [Header("GuardRight")]
+    [SerializeField]
+    Transform guardRight;
+    public void GuardRightLevelUp()
+    {
+        if (guardRight.localScale.x < 1 && guardRight.localScale.y < 2)
+        {
+            guardRight.localScale += new Vector3(0.01f, 0.02f);
+        }
+    }
+
+    public void ObjectLevelListClose()
+    {
+        objectLevelList.SetActive(false);
+    }
+
+
+    //シェイクレンジ
+    [Header("ShakeRange")]
+    [SerializeField]
+    Transform shakeRange;
+    [Header("Shake")]
+    [SerializeField]
+    GameObject shake;
+    public void ShakeRangeChange()
+    {
+        if (shakeRange.localScale.x > 0.01f)
+        {
+            shakeRange.localScale -= new Vector3(0.01f, 0.01f);
+            shake.GetComponent<Shake>().shakeRange -= 0.04f;
+        }
+    }
+
+
 }

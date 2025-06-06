@@ -10,7 +10,7 @@ public class Shake : MonoBehaviour
     [SerializeField]
     List<GameObject> dropList;
 
-    private float shakeRange = 5.5f;
+    public float shakeRange = 5.5f;
 
     private Vector3 mousepos = new Vector3();
     private Vector3[] compareVector = new Vector3[2];

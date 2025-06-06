@@ -866,8 +866,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1423207506}
   openList: {fileID: 0}
-  prefabList: []
-  ore: {fileID: 9221820389420583176, guid: 9141e1e4f9a7f8946acf1468bedf2d49, type: 3}
+  prefabList:
+  - {fileID: 9221820389420583176, guid: 9141e1e4f9a7f8946acf1468bedf2d49, type: 3}
+  - {fileID: 6353092144333670481, guid: 466ca369c5cbda342a7088a784065a8f, type: 3}
+  - {fileID: 8275506563841330335, guid: b36efc077592ff14297b0b6eb3931d29, type: 3}
+  - {fileID: 508210221776623998, guid: b7d5e836a01c18448bca5b4ed96386f3, type: 3}
+  - {fileID: 7564819079223350265, guid: abb2948dfd16df84580fbff4fd67c2f9, type: 3}
+  - {fileID: 8921713720799416802, guid: f2d225ccb0103c548a6b48b84ab2b840, type: 3}
+  autoSettingList: {fileID: 0}
+  objectLevelList: {fileID: 0}
+  basket: {fileID: 426643685}
+  guardLeft: {fileID: 1877728815}
+  guardRight: {fileID: 95374881}
+  shakeRange: {fileID: 966182077}
+  shake: {fileID: 1161740263}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,13 +1126,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 534241397}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 534241399}
+        m_TargetAssemblyTypeName: GameDirector, Assembly-CSharp
+        m_MethodName: ObjectLevelListOpen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1416,7 +1428,7 @@ Transform:
   m_GameObject: {fileID: 966182075}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1606,6 +1618,7 @@ MonoBehaviour:
   - {fileID: 8275506563841330335, guid: b36efc077592ff14297b0b6eb3931d29, type: 3}
   - {fileID: 7564819079223350265, guid: abb2948dfd16df84580fbff4fd67c2f9, type: 3}
   - {fileID: 8921713720799416802, guid: f2d225ccb0103c548a6b48b84ab2b840, type: 3}
+  shakeRange: 5.5
 --- !u!212 &1161740265
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2201,7 +2214,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 534241399}
         m_TargetAssemblyTypeName: GameDirector, Assembly-CSharp
-        m_MethodName: AutoScoreStart
+        m_MethodName: AutoSettingListOpen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2621,13 +2634,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 534241397}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 534241399}
+        m_TargetAssemblyTypeName: GameDirector, Assembly-CSharp
+        m_MethodName: ShakeRangeChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
