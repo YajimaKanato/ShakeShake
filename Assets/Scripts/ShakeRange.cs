@@ -6,7 +6,7 @@ public class ShakeRange : MonoBehaviour
     {
         if (collision.gameObject.tag == "Shake")
         {
-            transform.position = collision.transform.position;
+            //transform.position = collision.transform.position;
         }
     }
 }

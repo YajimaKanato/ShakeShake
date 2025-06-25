@@ -74,7 +74,7 @@ public class Shake : MonoBehaviour
         {
             compareVector[0] = transform.position;
             Debug.Log("端に到達");
-            if (Vector3.Distance(compareVector[0], compareVector[1]) > shakeRange)
+            if (Vector3.Distance(compareVector[0], compareVector[1]) >= shakeRange)
             {
                 Debug.Log("ナイスシェイク");
                 Drop();
